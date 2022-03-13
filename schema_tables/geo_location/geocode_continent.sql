@@ -1,0 +1,23 @@
+-- -----------------------------------------------------
+-- TABLE: geocode_continent
+-- ACTION: CREATE OR REPLACE
+-- -----------------------------------------------------
+-- NOTES:
+-- Notes for development
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS geocode_continent;
+
+CREATE TABLE IF NOT EXISTS geocode_continent (
+	geocode_continent_id CHAR(2) NOT NULL COMMENT 'Autoincrement primary key field of type bigint',
+	geocode_continent_name VARCHAR(50) NOT NULL COMMENT 'Full recognisable contintent name',
+	
+	record_create_date DATE NOT NULL DEFAULT curdate() COMMENT 'DATE timestamp for the tuple create date in the format YYYY-MM-DD',
+	record_create_time TIME NOT NULL DEFAULT curdate() COMMENT 'TIME timestamp for the tuple create time in the format HH:MM:SS.ffffff',
+	record_create_datetime DATETIME NOT NULL DEFAULT current_timestamp() COMMENT 'DATETIME timestamp for the tuple create datetime in the format YYYY-MM-DD HH:MM:SS.ffffff',
+ 
+	CONSTRAINT PRIMARY KEY (geocode_continent_id),
+	CONSTRAINT UNIQUE INDEX geocode_continent_name_index (geocode_continent_name ASC) VISIBLE
+)
+COMMENT 'Continent table containing all the continent references'
+ENGINE = InnoDB;
+-- -----------------------------------------------------
